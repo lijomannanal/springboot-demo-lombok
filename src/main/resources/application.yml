@@ -1,0 +1,50 @@
+server:
+  port: 8082
+welcome:
+  message: Welcome to spring boot by lijo
+spring:
+  profiles: 
+   active: development
+management:
+ endpoints:
+  web:
+   exposure:
+    include: '*'   
+
+---
+spring:
+  profiles: development
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/testdb
+    password: password
+  jpa: 
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+---
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/testdb
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/proddb
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
